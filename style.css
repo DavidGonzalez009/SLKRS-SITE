@@ -342,12 +342,6 @@ body.game {
   transform: translateX(-50%) scale(0.95);
 }
 
-.result-text {
-  margin-top: 25px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .goal-target {
   position: absolute;
   width: 80px;
@@ -415,21 +409,6 @@ body.game {
 
   opacity: 0.8;
 }
-
-@keyframes pulseTarget {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
 .goal-target:hover {
   transform: scale(1.2);
 
@@ -603,12 +582,15 @@ body.game {
 
 .result-text {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
 
   font-family: Impact, sans-serif;
-  font-size: 63px;
+  font-size: 52px;
+  line-height: 1.05;
+  width: 85%;
+  text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
 
@@ -1068,5 +1050,628 @@ body.shop {
   .goalie-product img {
     position: relative;
     top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .shop-page {
+    min-height: auto;
+    overflow-y: auto;
+  }
+
+  .shop-logo {
+    width: 170px;
+    margin-top: 30px;
+  }
+
+  .formation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px 10px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .product-card {
+    width: 150px;
+    margin: 0 auto;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-card p {
+    font-size: 18px;
+    line-height: 1.1;
+    margin-top: 8px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .product-card.striker {
+    transform: none;
+  }
+
+  .landing-menu button {
+    width: 130px;
+    padding: 8px 14px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .game-page {
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .game-title {
+    width: 85%;
+    margin-top: 20px;
+  }
+
+  .scoreboard {
+    top: 145px;
+    font-size: 28px;
+    gap: 35px;
+  }
+
+  .goal {
+    width: 85%;
+    top: 250px;
+  }
+
+  .target {
+    width: 85px;
+    height: 85px;
+  }
+
+  .ball {
+    width: 130px;
+    bottom: 80px;
+  }
+
+  @media (max-width: 600px) {
+    .scoreboard {
+      top: 28%;
+      font-size: 23px;
+    }
+  }
+
+  .instructions h2 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .instructions p {
+    font-size: 32px;
+    margin: 10px 0 0;
+  }
+
+  .target-top-left {
+    top: 34%;
+    left: 12%;
+  }
+
+  .target-top-right {
+    top: 34%;
+    right: 10%;
+  }
+
+  .target-bottom-left {
+    top: 45%;
+    left: 12%;
+  }
+
+  .target-bottom-right {
+    top: 45%;
+    right: 10%;
+  }
+}
+
+/* iPhone XR/ iphone 12 pro */
+/* GOALIE PHONE ADJUSTMENTS */
+@media (max-width: 414px) and (max-height: 896px) {
+  .goalie {
+    top: 47%;
+    width: 450px;
+  }
+
+  /* SHOP LOGO */
+  .shop-logo {
+    width: 250px;
+    margin-top: 30px;
+  }
+
+  .product-card p {
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  /* PRODUCT POSITIONS */
+  .striker {
+    top: 60%;
+    left: 10%;
+  }
+
+  .striker img {
+    width: 130px;
+  }
+  .striker::after {
+    width: 90px;
+    height: 7px;
+  }
+
+  .striker img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.striker p {
+    margin-top: 12px;
+  }
+
+  .midfielder {
+    top: 60%;
+    right: 10%;
+  }
+
+  .midfielder img {
+    width: 130px;
+  }
+  .midfielder::after {
+    width: 90px;
+    height: 7px;
+    bottom: 25px;
+  }
+
+  .midfielder img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.midfielder p {
+    margin-top: 12px;
+  }
+
+  .defender-left {
+    top: 43%;
+    left: 5%;
+  }
+
+  .defender-left img {
+    width: 100px;
+  }
+  .defender-left::after {
+    width: 40px;
+    height: 3px;
+    bottom: 40px;
+  }
+
+  .defender-left img {
+    position: relative;
+    top: 40px;
+  }
+
+  .defender-right {
+    top: 45%;
+    right: 7%;
+  }
+
+  .defender-right img {
+    width: 110px;
+  }
+
+  .defender-right::after {
+    width: 70px;
+    height: 5px;
+    bottom: 20px;
+  }
+
+  .defender-right img {
+    position: relative;
+    top: 30px;
+  }
+
+  .goalie-product {
+    top: 41%;
+    left: 32%;
+    transform: translateX(-50%);
+  }
+  .goalie-product img {
+    width: 60px;
+  }
+  .goalie-product::after {
+    width: 40px;
+    height: 3px;
+    bottom: 22px;
+  }
+
+  .goalie-product img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.goalie-product p {
+    margin-top: -5px;
+  }
+}
+
+/* iPhone SE / shorter screens */
+@media (max-width: 375px) and (max-height: 667px) {
+  .goalie {
+    top: 50%;
+    width: 360px;
+  }
+
+  /* SHOP LOGO */
+  .shop-logo {
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .product-card p {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  /* PRODUCT POSITIONS */
+  .striker {
+    top: 60%;
+    left: 10%;
+  }
+
+  .striker img {
+    width: 130px;
+  }
+  .striker::after {
+    width: 90px;
+    height: 7px;
+    bottom: 20px;
+  }
+
+  .striker img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.striker p {
+    margin-top: 12px;
+  }
+
+  .midfielder {
+    top: 60%;
+    right: 10%;
+  }
+
+  .midfielder img {
+    width: 130px;
+  }
+  .midfielder::after {
+    width: 90px;
+    height: 7px;
+    bottom: 18px;
+  }
+
+  .midfielder img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.midfielder p {
+    margin-top: 12px;
+  }
+
+  .defender-left {
+    top: 40%;
+    left: 5%;
+  }
+
+  .defender-left img {
+    width: 100px;
+  }
+  .defender-left::after {
+    width: 40px;
+    height: 3px;
+    bottom: 17px;
+  }
+
+  .defender-left img {
+    position: relative;
+    top: 40px;
+  }
+
+  .defender-right {
+    top: 40%;
+    right: 7%;
+  }
+
+  .defender-right img {
+    width: 110px;
+  }
+
+  .defender-right::after {
+    width: 70px;
+    height: 5px;
+    bottom: 14px;
+  }
+
+  .defender-right img {
+    position: relative;
+    top: 30px;
+  }
+
+  .goalie-product {
+    top: 38%;
+    left: 30%;
+    transform: translateX(-50%);
+  }
+  .goalie-product img {
+    width: 60px;
+  }
+  .goalie-product::after {
+    width: 40px;
+    height: 3px;
+    bottom: 18px;
+  }
+
+  .goalie-product img {
+    position: relative;
+    top: 30px;
+  }
+}
+
+/* taller phones like 14 Pro Max */
+@media (min-width: 420px) and (min-height: 900px) {
+  .goalie {
+    top: 47%;
+    width: 500px;
+  }
+
+  /* SHOP LOGO */
+  .shop-logo {
+    width: 300px;
+    margin-top: 20px;
+  }
+
+  .product-card p {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  /* PRODUCT POSITIONS */
+  .striker {
+    top: 60%;
+    left: 10%;
+  }
+
+  .striker img {
+    width: 130px;
+  }
+  .striker::after {
+    width: 90px;
+    height: 7px;
+    bottom: 20px;
+  }
+
+  .striker img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.striker p {
+    margin-top: 12px;
+  }
+
+  .midfielder {
+    top: 60%;
+    right: 10%;
+  }
+
+  .midfielder img {
+    width: 130px;
+  }
+  .midfielder::after {
+    width: 90px;
+    height: 7px;
+    bottom: 18px;
+  }
+
+  .midfielder img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.midfielder p {
+    margin-top: 12px;
+  }
+
+  .defender-left {
+    top: 45%;
+    left: 5%;
+  }
+
+  .defender-left img {
+    width: 100px;
+  }
+  .defender-left::after {
+    width: 40px;
+    height: 3px;
+    bottom: 17px;
+  }
+
+  .defender-left img {
+    position: relative;
+    top: 40px;
+  }
+
+  .defender-right {
+    top: 45%;
+    right: 7%;
+  }
+
+  .defender-right img {
+    width: 110px;
+  }
+
+  .defender-right::after {
+    width: 70px;
+    height: 5px;
+    bottom: 14px;
+  }
+
+  .defender-right img {
+    position: relative;
+    top: 30px;
+  }
+
+  .goalie-product {
+    top: 42%;
+    left: 32%;
+    transform: translateX(-50%);
+  }
+  .goalie-product img {
+    width: 60px;
+  }
+  .goalie-product::after {
+    width: 40px;
+    height: 3px;
+    bottom: 16px;
+  }
+
+  .goalie-product img {
+    position: relative;
+    top: 30px;
+  }
+  .product-card.goalie-product p {
+    margin-top: -5px;
+  }
+}
+
+/* iPad mini */
+@media (min-width: 768px) and (min-height: 1024px) {
+  .goalie {
+    top: 57%;
+    width: 800px;
+  }
+
+  /* SHOP LOGO */
+  .shop-logo {
+    width: 222px;
+    margin-top: 30px;
+  }
+
+  .product-card p {
+    font-size: 23px;
+    line-height: 1;
+  }
+
+  /* PRODUCT POSITIONS */
+  .striker {
+    top: 75%;
+    left: 10%;
+  }
+
+  .striker img {
+    width: 170px;
+  }
+  .striker::after {
+    width: 120px;
+    height: 7px;
+    bottom: 40px;
+  }
+
+  .striker img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.striker p {
+    margin-top: 12px;
+  }
+
+  .midfielder {
+    top: 75%;
+    right: 10%;
+  }
+
+  .midfielder img {
+    width: 170px;
+  }
+  .midfielder::after {
+    width: 120px;
+    height: 7px;
+    bottom: 38px;
+  }
+
+  .midfielder img {
+    position: relative;
+    top: 30px;
+  }
+
+  .product-card.midfielder p {
+    margin-top: 12px;
+  }
+
+  .defender-left {
+    top: 50%;
+    left: 5%;
+  }
+
+  .defender-left img {
+    width: 170px;
+  }
+  .defender-left::after {
+    width: 50px;
+    height: 3px;
+    bottom: 40px;
+  }
+
+  .defender-left img {
+    position: relative;
+    top: 40px;
+  }
+
+  .defender-right {
+    top: 50%;
+    right: 7%;
+  }
+
+  .defender-right img {
+    width: 170px;
+  }
+
+  .defender-right::after {
+    width: 110px;
+    height: 5px;
+    bottom: 33px;
+  }
+
+  .defender-right img {
+    position: relative;
+    top: 30px;
+  }
+
+  .goalie-product {
+    top: 45%;
+    left: 33%;
+    transform: translateX(-50%);
+  }
+  .goalie-product img {
+    width: 80px;
+  }
+  .goalie-product::after {
+    width: 40px;
+    height: 5px;
+    bottom: 40px;
+  }
+
+  .goalie-product img {
+    position: relative;
+    top: 30px;
+  }
+  .product-card.goalie-product p {
+    margin-top: -5px;
   }
 }
