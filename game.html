@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SLKRS - Game</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="game">
+    <div class="game-screen">
+      <picture>
+        <source media="(max-width: 900px)" srcset="game-mobile.png" />
+        <img src="game-page.png" alt="Penalty Shootout Game" class="game-bg" />
+      </picture>
+
+      <div class="game-wrap">
+        <div class="goal-target target-top-left"></div>
+        <div class="goal-target target-top-right"></div>
+        <div class="goal-target target-bottom-left"></div>
+        <div class="goal-target target-bottom-right"></div>
+
+        <div class="scoreboard">
+          <div id="scoreDisplay">GOALS: 0</div>
+          <div id="shotsDisplay">SHOTS: 0/5</div>
+        </div>
+
+        <div id="instructions" class="instructions">
+          <h2>TAP A TARGET TO SHOOT</h2>
+          <p>BEST OF 5</p>
+        </div>
+
+        <img src="goalie-center.png" alt="Goalie" class="goalie" id="goalie" />
+
+        <button id="kickBtn" class="ball-btn">
+          <img src="ball.png" alt="SLKRS Ball" />
+        </button>
+
+        <p id="resultText" class="result-text"></p>
+      </div>
+    </div>
+
+    <div id="endMenu" class="end-menu">
+      <button onclick="location.reload()">PLAY AGAIN</button>
+      <button onclick="window.location.href = 'shop.html'">ENTER SHOP</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

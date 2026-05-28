@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SLKRS Loading</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="loading">
+    <div class="loading-container">
+      <h1 class="loading-title"></h1>
+      <p class="loading-text"></p>
+
+      <div class="battery">
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+        <div class="battery-cell"></div>
+      </div>
+    </div>
+
+    <script>
+      const cells = document.querySelectorAll(".battery-cell");
+      let index = 0;
+
+      const fillBattery = setInterval(() => {
+        if (index < cells.length) {
+          cells[index].classList.add("active");
+          index++;
+        } else {
+          clearInterval(fillBattery);
+
+          /* turn battery green when full */
+
+          cells.forEach((cell) => {
+            cell.classList.add("full");
+          });
+
+          /* pause before entering game */
+
+          setTimeout(() => {
+            window.location.href = "game.html";
+          }, 1200);
+        }
+      }, 250);
+    </script>
+  </body>
+</html>

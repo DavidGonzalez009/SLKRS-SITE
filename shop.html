@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLKRS Shop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="shop">
+    <div class="shop-page">
+      <picture>
+        <source
+          media="(max-width: 900px)"
+          srcset="stadium-background-mobile.png"
+        />
+
+        <img
+          src="stadium-background.png"
+          alt="SLKRS Shop Stadium"
+          class="shop-bg"
+        />
+      </picture>
+
+      <div class="ticker">
+        <div class="ticker-track" id="tickerText">
+          LOADING WORLD CUP MATCHES...
+        </div>
+      </div>
+
+      <div class="shop-overlay">
+        <img src="shop-logo.png" alt="SLKRS Logo" class="shop-logo" />
+
+        <div class="formation">
+          <a
+            href="https://slkrs-4.myshopify.com/products/worldcup-bootleg"
+            target="_blank"
+            class="product-link"
+          >
+            <div class="product-card striker">
+              <img src="shirt1.png" alt="Shirt" />
+              <p>WorldCup Bootleg Tee</p>
+            </div>
+          </a>
+
+          <a
+            href="https://slkrs-4.myshopify.com/products/the-last-dance"
+            target="_blank"
+            class="product-link"
+          >
+            <div class="product-card midfielder">
+              <img src="shirt2.png" alt="Shirt" />
+              <p>The Last Dance Tee</p>
+            </div>
+          </a>
+
+          <a
+            href="https://slkrs-4.myshopify.com/products/slkrs-worldcup-kids"
+            target="_blank"
+            class="product-link"
+          >
+            <div class="product-card defender-left">
+              <img src="onesie1.png" alt="Onesie" />
+              <p>SLKRS WorldCup Kids</p>
+            </div>
+          </a>
+
+          <a
+            href="https://slkrs-4.myshopify.com/products/slkrs-worldcup-tee"
+            target="_blank"
+            class="product-link"
+          >
+            <div class="product-card defender-right">
+              <img src="Shirt3.png" alt="Shirt" />
+              <p>SLKRS WorldCup Tee</p>
+            </div>
+          </a>
+
+          <div class="product-card center-midfielder" style="display: none">
+            <img src="Shirt4.png" alt="" />
+            <p>SLKRS WorldCup Tee</p>
+          </div>
+
+          <a
+            href="https://slkrs-4.myshopify.com/products/slkrs-pin"
+            target="_blank"
+            class="product-link"
+          >
+            <div class="product-card goalie-product">
+              <img src="pin.png" alt="Pin" />
+              <p>SLKRS PIN</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const API_KEY = "0a58ac75d5a30b328c7bb168831abeb0";
+
+      async function fetchGames(url) {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-apisports-key": API_KEY,
+          },
+        });
+
+        const data = await response.json();
+        return data.response;
+      }
+
+      async function loadTicker() {
+        const ticker = document.getElementById("tickerText");
+
+        const ligaMxLive = await fetchGames(
+          "https://v3.football.api-sports.io/fixtures?live=all&league=262",
+        );
+
+        const championsLive = await fetchGames(
+          "https://v3.football.api-sports.io/fixtures?live=all&league=2",
+        );
+
+        const ligaMxUpcoming = await fetchGames(
+          "https://v3.football.api-sports.io/fixtures?league=262&season=2026&next=10",
+        );
+
+        const championsUpcoming = await fetchGames(
+          "https://v3.football.api-sports.io/fixtures?league=2&season=2026&next=10",
+        );
+
+        console.log("Liga MX Upcoming:", ligaMxUpcoming);
+        console.log("Champions Upcoming:", championsUpcoming);
+
+        const games = [
+          ...ligaMxLive,
+          ...championsLive,
+          ...ligaMxUpcoming,
+          ...championsUpcoming,
+        ];
+
+        if (games.length === 0) {
+          const customSchedule =
+            "LIGA MX • Chivas vs Cruz Azul • May 16 8:00PM CT || Pumas vs Pachuca • May 17 8:00PM CT || Champions League Final • PSG vs Arsenal • May 30 11:00AM CT || ";
+
+          ticker.innerHTML = customSchedule.repeat(6);
+          return;
+        }
+
+        const tickerText = games
+          .map((match) => {
+            const league = match.league.name;
+            const home = match.teams.home.name;
+            const away = match.teams.away.name;
+            const homeGoals = match.goals.home ?? 0;
+            const awayGoals = match.goals.away ?? 0;
+            const status = match.fixture.status.short;
+            const minute = match.fixture.status.elapsed;
+            const date = new Date(match.fixture.date).toLocaleString("en-US", {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+            });
+
+            if (status === "1H" || status === "2H" || status === "HT") {
+              return `LIVE ${minute || ""}' • ${league} • ${home} ${homeGoals} - ${awayGoals} ${away}`;
+            }
+
+            return `${league} • ${home} vs ${away} • ${date}`;
+          })
+          .join(" • ");
+
+        const customSchedule =
+          "LIGA MX • Chivas vs Cruz Azul • May 16 8:00PM CT | Champions League Final • PSG vs Arsenal • May 30 11:00AM CT • ";
+
+        ticker.innerHTML = (customSchedule + tickerText + " • ").repeat(4);
+      }
+
+      loadTicker();
+
+      // setInterval(loadTicker, 300000);
+    </script>
+  </body>
+</html>
